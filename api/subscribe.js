@@ -1,0 +1,2 @@
+const {sb}=require('./_supabase');
+module.exports=async(req,res)=>{if(req.method!=='POST')return res.status(405).json({error:'Method not allowed'});try{const email=String((req.body||{}).email||'').trim().toLowerCase();if(!/^\S+@\S+\.\S+$/.test(email))return res.status(400).json({error:'Valid email required'});const q=await sb().from('subscribers').upsert({email},{onConflict:'email'});if(q.error)throw q.error;return res.json({ok:true})}catch(e){return res.status(500).json({error:e.message})}};

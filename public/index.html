@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Christocentric Church — Christ at the Center</title>
+<meta name="description" content="A church where every sermon, song, and decision is measured by one question: does it center Christ? Join us this Sunday in-person or online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#4c0b2a;
+    --ink-2:#161412;
+    --crimson:#7a1128;
+    --crimson-2:#5e0c1f;
+    --gold:#b8934a;
+    --gold-soft:#d8c393;
+    --parchment:#f3eee4;
+    --parchment-2:#ece5d6;
+    --stone:#a89d8c;
+    --charcoal:#211e1b;
+    --line:rgba(184,147,74,0.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--parchment);
+    color:var(--charcoal);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .serif{font-family:'Fraunces',serif;}
+  .container{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* recurring "spine" eyebrow — the signature motif: a short gold tick + line,
+     echoing a single fixed axis everything aligns to */
+  .eyebrow{
+    display:flex;align-items:center;gap:12px;
+    font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);}
+  .eyebrow.on-dark{color:var(--gold-soft);}
+
+  /* NAV */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:22px 0;
+    transition:background .35s ease, padding .35s ease, border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    background:rgba(12,11,10,0.92);
+    backdrop-filter:blur(10px);
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;}
+  .brand-mark{
+    width:15px;height:15px;position:relative;flex-shrink:0;
+  }
+  .brand-mark::before,.brand-mark::after{content:"";position:absolute;background:var(--gold);}
+  .brand-mark::before{width:1.5px;height:15px;left:6.75px;top:0;}
+  .brand-mark::after{width:9px;height:1.5px;left:3px;top:4px;}
+  .brand-word{font-family:'Fraunces',serif;font-size:16.5px;letter-spacing:.05em;font-weight:500;}
+  .brand-word b{font-weight:600;}
+  .nav-links{display:flex;align-items:center;gap:36px;}
+  .nav-links a{
+    color:rgba(255,255,255,.8);font-size:13.5px;letter-spacing:.03em;font-weight:500;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:#fff;}
+  .nav-cta{
+    background:var(--crimson);color:#fff !important;padding:10px 20px;
+    border-radius:2px;font-size:13px;font-weight:600;letter-spacing:.02em;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--crimson-2);}
+  .menu-btn{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    position:relative;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;color:#fff;overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 600px at 50% 15%, rgba(184,147,74,0.14), transparent 60%),
+      radial-gradient(ellipse 700px 900px at 50% 100%, rgba(122,17,40,0.35), transparent 65%),
+      linear-gradient(180deg, var(--ink) 0%, #100d0c 55%, var(--ink) 100%);
+    padding:140px 24px 90px;
+  }
+  .hero .beam{
+    position:absolute;top:-10%;width:220px;height:130%;
+    background:linear-gradient(180deg, rgba(216,195,147,0.10), transparent 70%);
+    filter:blur(6px);transform:rotate(8deg);pointer-events:none;
+  }
+  .hero .beam.b1{left:18%;}
+  .hero .beam.b2{left:48%;width:280px;opacity:.6;transform:rotate(-4deg);}
+  .hero .beam.b3{left:74%;transform:rotate(14deg);opacity:.5;}
+
+  .hero-axis{
+    width:1px;height:46px;background:linear-gradient(180deg, transparent, var(--gold));
+    margin:0 auto 26px;
+  }
+  .hero .eyebrow{justify-content:center;margin-bottom:22px;}
+  .hero .eyebrow::before{display:none;}
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:clamp(40px, 7vw, 78px);line-height:1.05;letter-spacing:-.01em;
+    max-width:15ch;margin:0 auto;
+  }
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--gold-soft);}
+  .hero p.lede{
+    margin:26px auto 0;max-width:520px;font-size:17px;line-height:1.65;
+    color:rgba(255,255,255,.72);
+  }
+  .hero-ctas{display:flex;gap:14px;justify-content:center;margin-top:40px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:16px 30px;font-size:14.5px;font-weight:600;letter-spacing:.02em;
+    border-radius:2px;cursor:pointer;border:1px solid transparent;
+    transition:transform .18s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--crimson);color:#fff;}
+  .btn-primary:hover{background:var(--crimson-2);}
+  .btn-ghost{
+    background:rgba(255,255,255,.06);color:#fff;
+    border-color:rgba(255,255,255,.28);backdrop-filter:blur(6px);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,.12);}
+  .btn-ghost svg{width:11px;height:11px;}
+
+  .hero-times{
+    margin-top:64px;display:flex;gap:0;border-top:1px solid rgba(255,255,255,.14);
+    padding-top:22px;
+  }
+  .hero-times div{padding:0 26px;text-align:left;border-left:1px solid rgba(255,255,255,.14);}
+  .hero-times div:first-child{border-left:none;padding-left:0;}
+  .hero-times .t-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:5px;}
+  .hero-times .t-value{font-family:'Fraunces',serif;font-size:16px;color:#fff;}
+
+  /* MISSION / PILLARS — laid along the central spine */
+  .section{padding:110px 0;}
+  .section-dark{background:var(--ink);color:var(--parchment);}
+  .center-head{max-width:640px;margin:0 auto 60px;text-align:center;}
+  .center-head h2{
+    font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,4vw,44px);
+    line-height:1.15;letter-spacing:-.01em;
+  }
+  .center-head .eyebrow{justify-content:center;}
+  .center-head .eyebrow::before{display:none;}
+  .center-head p{margin-top:16px;font-size:16px;line-height:1.7;color:#665f54;}
+  .section-dark .center-head p{color:var(--stone);}
+
+  .spine{position:relative;max-width:900px;margin:0 auto;}
+  .spine::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;
+    background:linear-gradient(180deg, transparent, var(--line) 10%, var(--line) 90%, transparent);
+  }
+  .pillar-row{display:grid;grid-template-columns:1fr 1fr;position:relative;}
+  .pillar{padding:0 56px 64px;position:relative;}
+  .pillar:nth-child(odd){text-align:right;}
+  .pillar:nth-child(even){text-align:left;}
+  .pillar-mark{
+    position:absolute;top:2px;width:9px;height:9px;border-radius:50%;
+    background:var(--gold);border:2px solid var(--ink);
+  }
+  .pillar:nth-child(odd) .pillar-mark{right:-4.5px;}
+  .pillar:nth-child(even) .pillar-mark{left:-4.5px;}
+  .pillar h3{font-family:'Fraunces',serif;font-size:23px;font-weight:500;margin-bottom:10px;}
+  .pillar p{font-size:14.5px;line-height:1.7;color:var(--stone);}
+
+  /* THIS SUNDAY CARD */
+  .sunday-wrap{padding:90px 0;background:var(--parchment-2);}
+  .sunday-card{
+    max-width:1180px;margin:0 auto;padding:0 28px;
+  }
+  .sunday-inner{
+    background:var(--ink);color:#fff;border-radius:4px;
+    display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.35);
+  }
+  .sunday-copy{padding:56px 54px;}
+  .sunday-copy .eyebrow{color:var(--gold-soft);}
+  .sunday-copy .eyebrow::before{background:var(--gold-soft);}
+  .sunday-copy h3{font-family:'Fraunces',serif;font-size:32px;font-weight:500;margin-bottom:16px;line-height:1.2;}
+  .sunday-copy p{color:var(--stone);font-size:15px;line-height:1.7;margin-bottom:28px;max-width:42ch;}
+  .sunday-meta{display:flex;gap:34px;margin-bottom:30px;flex-wrap:wrap;}
+  .sunday-meta div .m-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;}
+  .sunday-meta div .m-value{font-family:'Fraunces',serif;font-size:17px;}
+  .sunday-visual{
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(184,147,74,0.35), transparent 55%),
+      radial-gradient(ellipse at 70% 80%, rgba(122,17,40,0.55), transparent 60%),
+      var(--ink-2);
+    position:relative;min-height:280px;
+  }
+  .sunday-visual::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(115deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 46px);
+  }
+
+  /* WATCH / SERMON */
+  .watch-wrap{padding:110px 0;}
+  .watch-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center;}
+  .watch-player{
+    position:relative;aspect-ratio:16/10;border-radius:4px;overflow:hidden;
+    background:
+      radial-gradient(ellipse at 60% 30%, rgba(122,17,40,.5), transparent 60%),
+      radial-gradient(ellipse at 30% 80%, rgba(184,147,74,.28), transparent 55%),
+      var(--ink);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+  }
+  .play-btn{
+    width:68px;height:68px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .watch-player:hover .play-btn{transform:scale(1.08);background:rgba(255,255,255,.08);}
+  .play-btn svg{width:16px;height:16px;margin-left:3px;fill:#fff;}
+  .watch-copy .eyebrow::before{display:none;}
+  .watch-copy h3{font-family:'Fraunces',serif;font-size:clamp(28px,3.6vw,38px);font-weight:500;margin-bottom:18px;line-height:1.2;}
+  .watch-copy p{color:#665f54;font-size:15.5px;line-height:1.75;margin-bottom:28px;max-width:46ch;}
+
+  /* TESTIMONIALS */
+  .voices{background:var(--ink);color:#fff;padding:110px 0;}
+  .voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);}
+  .voice{background:var(--ink);padding:42px 36px;}
+  .voice p{font-family:'Fraunces',serif;font-style:italic;font-size:18px;line-height:1.6;color:var(--parchment-2);}
+  .voice .who{margin-top:22px;font-size:12.5px;letter-spacing:.04em;color:var(--gold-soft);text-transform:uppercase;}
+
+  /* GIVE */
+  .give{
+    background:linear-gradient(135deg, var(--crimson) 0%, var(--crimson-2) 100%);
+    color:#fff;padding:100px 0;text-align:center;
+  }
+  .give .eyebrow{justify-content:center;color:var(--gold-soft);}
+  .give .eyebrow::before{display:none;}
+  .give h3{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,42px);font-weight:500;max-width:16ch;margin:0 auto 18px;line-height:1.2;}
+  .give p{max-width:52ch;margin:0 auto 34px;color:rgba(255,255,255,.85);font-size:15.5px;line-height:1.7;}
+  .give .btn-primary{background:#fff;color:var(--crimson-2);}
+  .give .btn-primary:hover{background:var(--parchment);}
+
+  /* CONNECT / EMAIL CAPTURE */
+  .connect{padding:100px 0;}
+  .connect-inner{
+    max-width:760px;margin:0 auto;text-align:center;
+  }
+  .connect-form{
+    display:flex;gap:10px;max-width:440px;margin:34px auto 0;
+  }
+  .connect-form input{
+    flex:1;padding:15px 18px;border:1px solid #d9d0bc;border-radius:2px;
+    font-family:'Inter',sans-serif;font-size:14.5px;background:#fff;color:var(--charcoal);
+  }
+  .connect-form input:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  .connect-form .btn-primary{padding:15px 24px;white-space:nowrap;}
+  .connect-note{margin-top:14px;font-size:12.5px;color:#8a8378;}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:var(--stone);padding:70px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.08);}
+  .foot-brand .brand{margin-bottom:16px;}
+  .foot-brand p{font-size:13.5px;line-height:1.7;max-width:32ch;color:var(--stone);}
+  .foot-col h4{color:#fff;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;font-weight:600;}
+  .foot-col a{display:block;font-size:14px;color:var(--stone);margin-bottom:12px;transition:color .2s;}
+  .foot-col a:hover{color:#fff;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:12.5px;flex-wrap:wrap;gap:12px;}
+  .foot-bottom a{color:var(--stone);}
+  .foot-socials{display:flex;gap:16px;}
+
+  /* RESPONSIVE */
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .menu-btn{display:block;}
+    .hero-times{flex-wrap:wrap;justify-content:center;}
+    .pillar-row{grid-template-columns:1fr;}
+    .spine::before{left:14px;}
+    .pillar{text-align:left !important;padding:0 0 44px 40px;}
+    .pillar:nth-child(odd) .pillar-mark,.pillar:nth-child(even) .pillar-mark{left:9.5px;right:auto;}
+    .sunday-inner{grid-template-columns:1fr;}
+    .sunday-visual{min-height:160px;order:-1;}
+    .watch-grid{grid-template-columns:1fr;gap:36px;}
+    .voices-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .connect-form{flex-direction:column;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="container">
+    <nav>
+      <a href="#" class="brand">
+        <span class="brand-mark"></span>
+        <span class="brand-word">THE <b>CHRISTOCENTRIC</b> CHURCH</span>
+      </a>
+      <div class="nav-links">
+        <a href="#pillars">About</a>
+        <a href="#sunday">Visit</a>
+        <a href="#watch">Watch</a>
+        <a href="#give">Give</a>
+        <a href="#connect" class="nav-cta">Plan a Visit</a>
+      </div>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="beam b1"></div>
+  <div class="beam b2"></div>
+  <div class="beam b3"></div>
+  <div class="hero-axis"></div>
+  <div class="eyebrow on-dark">The Christocentric Church</div>
+  <h1>Everything we do <br><em>centers on Christ</em></h1>
+  <p class="lede">No gimmicks, no side attractions — just the Word taught with clarity, worship that's real, and a family that will walk with you. Come as you are this Sunday.</p>
+  <div class="hero-ctas">
+    <a href="#sunday" class="btn btn-primary">Plan Your Visit</a>
+    <a href="#watch" class="btn btn-ghost">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Watch Online
+    </a>
+  </div>
+  <div class="hero-times">
+    <div><div class="t-label">Sunday Service</div><div class="t-value">9:00 AM &amp; 11:30 AM</div></div>
+    <div><div class="t-label">Midweek</div><div class="t-value">Wednesday, 6:00 PM</div></div>
+    <div><div class="t-label">Location</div><div class="t-value">Akure, Ondo</div></div>
+  </div>
+</section>
+
+<section class="section" id="pillars">
+  <div class="container">
+    <div class="center-head">
+      <div class="eyebrow">What We're Built On</div>
+      <h2>One center. Three expressions.</h2>
+      <p>We're not organized around a personality or a program. Every ministry here exists to point back to one thing.</p>
+    </div>
+    <div class="spine">
+      <div class="pillar-row">
+        <div class="pillar">
+          <span class="pillar-mark"></span>
+          <h3>The Word</h3>
+          <p>Scripture taught in full — not fragments picked to fit a mood. You'll leave knowing what the Bible actually says, and why it matters this week.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-mark"></span>
+          <h3>Worship</h3>
+          <p>Unhurried, honest worship that makes room for God to move — healing, direction, and presence, not just a set list.</p>
+        </div>
+      </div>
+      <div class="pillar-row">
+        <div class="pillar">
+          <span class="pillar-mark"></span>
+          <h3>Community</h3>
+          <p>Small groups and family gatherings where people actually know your name and carry your week with you.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-mark"></span>
+          <h3>Mission</h3>
+          <p>What's taught here is meant to leave the building — in how we work, give, and love our city and beyond.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sunday-wrap" id="sunday">
+  <div class="sunday-card">
+    <div class="sunday-inner">
+      <div class="sunday-copy">
+        <div class="eyebrow">This Sunday</div>
+        <h3>You'll be welcome the moment you walk in.</h3>
+        <p>No membership required to attend, no dress code, no pressure. Just come, and let's take it from there. Kids' church runs at both services.</p>
+        <div class="sunday-meta">
+          <div><div class="m-label">Time</div><div class="m-value">9:00 AM &amp; 11:30 AM</div></div>
+          <div><div class="m-label">Where</div><div class="m-value">The Christocentric Centre</div></div>
+          <div><div class="m-label">Parking</div><div class="m-value">On-site, free</div></div>
+        </div>
+        <a href="#connect" class="btn btn-primary">I'm Planning My Visit</a>
+      </div>
+      <div class="sunday-visual"></div>
+    </div>
+  </div>
+</section>
+
+<section class="watch-wrap" id="watch">
+  <div class="container">
+    <div class="watch-grid">
+      <div class="watch-player">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="watch-copy">
+        <div class="eyebrow">Latest Message</div>
+        <h3>Can't make it in person? Watch this week's message.</h3>
+        <p>Every sermon, streamed live and archived free — so you never miss what's being taught, wherever you are.</p>
+        <a href="#" class="btn btn-primary">Watch Full Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="voices">
+  <div class="container">
+    <div class="center-head">
+      <div class="eyebrow on-dark">From Our Family</div>
+      <h2>Stories from people who found their center here.</h2>
+    </div>
+  </div>
+  <div class="voices-grid">
+    <div class="voice">
+      <p>"I visited once as a guest. Two years later, this is home — and my life actually looks different because of it."</p>
+      <div class="who">Adaeze O. — Member since 2024</div>
+    </div>
+    <div class="voice">
+      <p>"The teaching doesn't dance around hard questions. That's rare, and it's why I stayed."</p>
+      <div class="who">Michael T. — Member since 2023</div>
+    </div>
+    <div class="voice">
+      <p>"I moved cities and joined online first. By the time I visited in person, it already felt like family."</p>
+      <div class="who">Grace I. — Online Community</div>
+    </div>
+  </div>
+</section>
+
+<section class="give" id="give">
+  <div class="container">
+    <div class="eyebrow">Generosity</div>
+    <h3>Your giving keeps this centered work going.</h3>
+    <p>Every gift funds the teaching, the outreach, and the people this church exists to serve — here and beyond.</p>
+    <a href="#" class="btn btn-primary">Give Now</a>
+  </div>
+</section>
+
+<section class="connect" id="connect">
+  <div class="container">
+    <div class="connect-inner">
+      <div class="eyebrow" style="justify-content:center;"><span></span></div>
+      <h2 class="serif" style="font-size:clamp(26px,3.4vw,36px);font-weight:500;">Let's stay in touch.</h2>
+      <p style="color:#665f54;margin-top:14px;font-size:15.5px;">Leave your email and we'll send you service times, what to expect, and how to find us — no spam, ever.</p>
+      <form class="connect-form" id="newsletterForm">
+        <input id="newsletterEmail" type="email" required placeholder="you@email.com" aria-label="Email address">
+        <button type="submit" class="btn btn-primary">Keep Me Posted</button>
+      </form>
+      <div class="connect-note">Or reach us directly at hello@christocentricchurch.org</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="brand">
+          <span class="brand-mark"></span>
+          <span class="brand-word">THE <b>CHRISTOCENTRIC</b> CHURCH</span>
+        </a>
+        <p>A church in Akure, Ondo, committed to one thing: keeping Christ at the center of everything we teach, sing, and do.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <a href="#sunday">Service Times</a>
+        <a href="#">Directions</a>
+        <a href="#">What to Expect</a>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <a href="#watch">Watch Online</a>
+        <a href="#">Sermons</a>
+        <a href="#">Events</a>
+      </div>
+      <div class="foot-col">
+        <h4>Give</h4>
+        <a href="#give">Give Now</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 The Christocentric Church. All rights reserved.</div>
+      <div class="foot-socials">
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+
+<script>
+const newsletterForm=document.getElementById('newsletterForm');
+if(newsletterForm){newsletterForm.addEventListener('submit',async e=>{e.preventDefault();const b=newsletterForm.querySelector('button');const email=document.getElementById('newsletterEmail').value.trim();b.disabled=true;b.textContent='Submitting…';try{const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});const d=await r.json();if(!r.ok)throw Error(d.error||'Could not subscribe');b.textContent='Thank you — you’re on the list';newsletterForm.reset()}catch(err){b.disabled=false;b.textContent='Try Again';alert(err.message)}})}
+</script>
+</body>
+</html>
