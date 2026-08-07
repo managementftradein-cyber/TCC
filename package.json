@@ -1,8 +1,0 @@
-{
-  "name": "christocentric-church",
-  "version": "2.1.0",
-  "private": true,
-  "description": "Christocentric Church website with Vercel serverless API, Supabase database and authenticated admin dashboard.",
-  "engines": { "node": ">=20" },
-  "dependencies": { "@supabase/supabase-js": "^2.57.0" }
-}
