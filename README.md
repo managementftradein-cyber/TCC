@@ -52,3 +52,7 @@ If an admin session expires, sign in again.
 ## Important limitation
 
 The public homepage is primarily the supplied static design. The backend/admin foundation is functional for managing database records, but the homepage's sermons/events/announcements sections are not yet fully data-driven from the dashboard. That integration should be done deliberately rather than mixing another project version into this package.
+
+
+## Deployment layout
+The public homepage is at the project root (`index.html`), the admin dashboard is at `/admin/`, and serverless API functions are under `/api/`. This layout is intentionally kept simple for Vercel so `/api/config` is handled as a serverless function rather than rewritten to an HTML page.
